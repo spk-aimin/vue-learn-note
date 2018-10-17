@@ -61,77 +61,65 @@ vue init webpack my-project
 
 ```javascript
  new Vue({
-     components: {component1, component2, ...}
+     el: '#app',
+     components: {component1, ...}
  })
 ```
 
-vue应用是由众多vue组件组成
+例：
 
-![vue commponent tree](../img/a_5.png)
+```js
+//index.js
+import Vue from 'vue'
+import ComponentA from './ComponentA'
 
-### 组件
-
-组件编写
-
-```javascript
-var component =  {
-    template: '<div>...</div>'
-    ...
+new Vue {
+    el: '#app',
+    data: {
+        isUs: false
+    },
+    methods: {
+        changeLaguage(){
+            this.isUs = !this.isUs
+        }
+    },
+    components: {ComponentA: ComponentA}
 }
 ```
+```html
+<!--index.html-->
+<html>
+    <head></head>
+    <body>
+        <div id='#app'>
+            <ComponentA :is-us='isUs'/>
+        </div>
+    </body>
+</html>
+```
+> 注意当vue实例声明模板时el元素将被替换
 
 ```html
+<!--ComponentA.vue-->
 <template>
     <div>
-        ...
+        <div v-if='isUs'>{{us}}</div>
+        <div v-else>{{zh}}</div>
     </div>
 </template>
 <script>
     export default {
-        ...
+        props: {
+            isUs: Boolean
+        },
+        data() {
+            return {
+                us: 'hello world',
+                zh: '世界你好'
+            }
+        }
     }
 </script>
-```
-
-组件注册
-
-```html
-<!--A1.vue 组件A1文件-->
-<template>
-    <div>
-        {{msg}}
-    </div>
-</template>
-<script>
-    export default({
-        data() {
-            return {}
-        }
-    })
-</script>
-```
-
-- 全局注册
-
-```js
-import A1 from './A1'
-Vue.componet('A1', A1)
-```
-
-- 局部注册
-
-```html
-<!--组件B-->
-<template>
-    <div>
-        <a1></a1>
-    </div>
-</template>
-<script>
-    import A1 from './A1'
-    export default ({
-        components: {A1},
-        ...
-    }) 
-</script>
+<style scoped>
+</style>
 ```
