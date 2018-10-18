@@ -13,6 +13,9 @@ vue.component('component-b', {//组件B
 
 ![component tree](../img/a_5.png)
 
+
+
+
 ## 组件注册 
 
 - 全局注册

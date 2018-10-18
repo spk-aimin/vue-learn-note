@@ -1,3 +1,7 @@
+# vue入门笔记
+
+
+
 <vuep template="#example"></vuep>
 
 <script v-pre type="text/x-template" id="example">
