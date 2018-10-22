@@ -1,4 +1,4 @@
-*vue入门笔记*
+<strong>vue入门笔记</strong>
 
 * [首页](README.md)
 * [起步](pages/start)
